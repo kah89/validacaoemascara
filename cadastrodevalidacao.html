@@ -1,0 +1,170 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro com Validação</title>
+<link href="css/cadastrodevalidacao.css" rel="stylesheet" type="text/css"/> 
+
+
+
+</head>
+<body>
+
+ <header>
+ 	<p>Cadastro</p>
+ 	<p>https://localhoast/validacao/cadastro.html</p>
+ </header>
+ 
+<form class="form-horizontal container" id="form_contato">
+
+<div class="panel-heading"><h1>Cadastre-se</h1></div>
+
+<div class="form-group">
+
+<label class="col-md-4 control-label" for="Nome">Nome:</label>  
+<div class="col-md-8 input-group">
+<input id="nome" name="nome" class="form-control input-md" type="text">
+</div>
+
+<label class="col-md-4 control-label" for="prependedtext">Email:</label>
+<div class="col-md-8 input-group">
+<input id="email" name="email" class="form-control" placeholder="email@email.com" type="text" >
+</div>
+
+<label class="col-md-4 control-label" for="prependedtext">Telefone:</label>
+<div class="col-md-8 input-group">
+<input id="tel" name="tel" class="form-control" placeholder="XX XXXXX-XXXX" type="text">
+</div>
+
+<label class="col-md-4 control-label" for="Nome">CPF: </label>  
+<div class="col-md-8 input-group">
+<input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" type="text">
+</div>
+  
+<label class="col-md-4 control-label" for="Nome">Data de Nascimento:</label>  
+<div class="col-md-8 input-group">
+<input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" type="text">
+</div>
+
+<label class="col-md-4 control-label" for="prependedtext">Endereço:</label>
+<div class="col-md-8 input-group">
+<input id="rua" name="rua" class="form-control" type="text">
+</div>
+
+<label class="col-md-4 control-label" for="CEP">CEP:</label>
+<div class="col-md-8 input-group">
+<input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" type="search">
+</div>
+
+<label  class="col-md-4 control-label" for="estado">Estado:</label>
+<div class="col-md-8 input-group">
+<select id="estado" name="estado" class="form-control" type="text">
+<option value="AC">Acre</option>
+<option value="AL">Alagoas</option>
+<option value="AP">Amapá</option>
+<option value="AM">Amazonas</option>
+<option value="BA">Bahia</option>
+<option value="CE">Ceará</option>
+<option value="DF">Distrito Federal</option>
+<option value="ES">Espírito Santo</option>
+<option value="GO">Goiás</option>
+<option value="MA">Maranhão</option>
+<option value="MT">Mato Grosso</option>
+<option value="MS">Mato Grosso do Sul </option>
+<option value="MG">Minas Gerais</option>
+<option value="PA">Pará</option>
+<option value="PB">Paraíba</option>
+<option value="PR">Paraná</option>
+<option value="PE">Pernambuco</option>
+<option value="PI">Piauí</option>
+<option value="RJ">Rio de Janeiro</option>
+<option value="RN">Rio Grande do Norte</option>
+<option value="RS">Rio Grande do Sul</option>
+<option value="RO">Rondônia</option>
+<option value="RR">Roraima</option>
+<option value="SC">Santa Catarina</option>
+<option value="SP">São Paulo</option>
+<option value="SE">Sergipe</option>
+<option value="TO">Tocantins</option>
+</select>
+</div>
+
+<label class="col-md-4 control-label">Cidade:</label>
+<div class="col-md-8 input-group">
+<input id="cidade" name="cidade" class="form-control" type="text">
+</div>
+
+<div class="campo">
+<label>
+<input class="col-md" type="checkbox" name="termos" value="1"> Eu aceito os termos de uso.
+</label>
+</div> 
+
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="Cadastrar"></label>
+<div class="col-md-8 input-group">
+<button id="Cancelar" name="Cancelar" onclick="limpa_formulario" class="btn btn-danger" type="Reset">Limpar</button>
+<button id="Cadastrar" name="Cadastrar" class="btn btn-success" rel='7' type="Submit">Cadastrar</button>
+</div>
+</div>
+
+</div>
+
+</form>
+
+
+
+
+  
+    
+
+
+<!-- incluindo o Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+<!-- incluindoo plugin mascar do Jquery -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+
+<!-- incluindoo validação do Jquery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+
+
+
+<script>
+jQuery(function($){
+$("#tel").mask("(99) 99999-9999");
+$("#cpf").mask("999.999.999-99");
+$("#dtnasc").mask("99/99/9999");
+$("#cep").mask("99999-999");
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#form_contato').validate({
+rules: {
+nome: { required: true, minlength: 5 },
+email: { required: true, email: true },
+tel: { required: true },
+cpf: { required: true }
+},
+messages: {
+nome: { required: 'Preencha o campo nome', minlength: 'No mínimo 5 letras' },
+email: { required: 'Informe o seu email', email: 'Ops, informe um email válido' },
+tel: { required: 'Informe seu telefone' },
+cpf: { required: 'Informe seu CPF' }
+},
+});
+});
+	
+
+</script>
+
+
+
+</body>
+</html>
